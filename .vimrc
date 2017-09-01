@@ -1,1 +1,43 @@
-/home/lee/.vimrc
+execute pathogen#infect()
+
+" Taken largely from https://dougblack.io/words/a-good-vimrc.html
+syntax on
+filetype plugin indent on
+syntax enable
+set background=dark
+" colorscheme molokai
+colorscheme industry
+set tabstop=4
+set softtabstop=4
+set expandtab
+set number
+set showcmd
+filetype indent on
+set wildmenu
+set lazyredraw
+set showmatch
+set incsearch
+set hlsearch
+set shiftwidth=4
+
+nnoremap <leader><space> :nohlsearch<CR>
+
+nnoremap j gj
+nnoremap k gk
+
+nnoremap B ^
+nnoremap E $
+
+nnoremap ^ <nop>
+nnoremap $ <nop>
+
+imap jk <Esc>
+set term=screen-256color
+
+" Now from http://www.integralist.co.uk/posts/bash-vim-configuration.html
+set history=100
+set encoding=utf-8
+set clipboard+=unnamed
+
+" Now for my own additions
+set mouse=a " mouse enabled in all modes
