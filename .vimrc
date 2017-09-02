@@ -41,3 +41,13 @@ set clipboard+=unnamed
 
 " Now for my own additions
 set mouse=a " mouse enabled in all modes
+
+" easier split navigations
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" more natural split opening
+set splitbelow
+set splitright
