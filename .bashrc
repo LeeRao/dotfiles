@@ -118,8 +118,10 @@ fi
 
 # Stuff I added
 alias uml="python /home/lee/bin/plant.py "
-alias python="python3"
+# alias python="python3"
 set editor -o vi
 alias color='python ~/bin/change_theme.py'
 alias t='tmux'
-alias utcs='ssh leerao@schopenhauer.cs.utexas.edu'
+alias utcs='ssh leerao@le-nozze-di-figaro.cs.utexas.edu'
+alias utcs2='ssh leerao@thurston-howell-iii.cs.utexas.edu'
+alias gsaf='ssh leerao@gsafbig02.ccbb.utexas.edu'

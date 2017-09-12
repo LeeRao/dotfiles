@@ -51,3 +51,12 @@ nnoremap <C-H> <C-W><C-H>
 " more natural split opening
 set splitbelow
 set splitright
+
+" highlight column 100
+highlight ColorColumn ctermbg=gray
+set colorcolumn=100
+
+" autocreate braces
+" inoremap {<CR> {<CR>}<Esc>ko
+inoremap { {}<Esc>i
+inoremap ( ()<Esc>i
