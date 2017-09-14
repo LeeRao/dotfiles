@@ -1,4 +1,4 @@
-execute pathogen#infect()
+"execute pathogen#infect()
 
 " Taken largely from https://dougblack.io/words/a-good-vimrc.html
 syntax on
@@ -76,8 +76,8 @@ autocmd Syntax html,vim inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<
 inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
 inoremap } <c-r>=CloseBracket()<CR>
-inoremap " <c-r>=QuoteDelim('"')<CR>
-inoremap ' <c-r>=QuoteDelim("'")<CR>
+"inoremap " <c-r>=QuoteDelim('"')<CR>
+"inoremap ' <c-r>=QuoteDelim("'")<CR>
 
 function ClosePair(char)
  if getline('.')[col('.') - 1] == a:char
