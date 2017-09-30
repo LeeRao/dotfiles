@@ -25,6 +25,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap j gj
 nnoremap k gk
 
+nnoremap gj j
+nnoremap gk k
+
 nnoremap B ^
 nnoremap E $
 
@@ -78,6 +81,19 @@ inoremap ] <c-r>=ClosePair(']')<CR>
 inoremap } <c-r>=CloseBracket()<CR>
 "inoremap " <c-r>=QuoteDelim('"')<CR>
 "inoremap ' <c-r>=QuoteDelim("'")<CR>
+
+function! ConditionalPairMap(open, close)
+    let line = getline('.')
+    let col = col('.')
+    if col < col('$') || stridx(line, a:close, col + 1) != -1
+        return a:open
+    else
+        return a:open . a:close . repeat("\<left>", len(a:close))
+    endif
+endf
+inoremap <expr> ( ConditionalPairMap('(', ')')
+inoremap <expr> { ConditionalPairMap('{', '}')
+inoremap <expr> [ ConditionalPairMap('[', ']')
 
 function ClosePair(char)
  if getline('.')[col('.') - 1] == a:char
