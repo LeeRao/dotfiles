@@ -7,9 +7,15 @@ syntax enable
 set background=dark
 " colorscheme molokai
 colorscheme industry
+
 set tabstop=4
 set softtabstop=4
+set shiftwidth=4
+autocmd FileType r,rmd set tabstop=2
+autocmd FileType r,rmd set softtabstop=2
+autocmd FileType r,rmd set shiftwidth=2
 set expandtab
+
 set number
 set showcmd
 filetype indent on
@@ -18,7 +24,6 @@ set lazyredraw
 set showmatch
 set incsearch
 set hlsearch
-set shiftwidth=4
 
 nnoremap <leader><space> :nohlsearch<CR>
 
@@ -71,14 +76,21 @@ augroup END
 
 " autocreate braces, taken from http://vim.wikia.com/wiki/Making_Parenthesis_And_Brackets_Handling_Easier
 " Also allows you to overlap closing character
+
+
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap { {}<Esc>i
 inoremap {<CR> {<CR>}<Esc>ko
 autocmd Syntax html,vim inoremap < <lt>><Esc>i| inoremap > <c-r>=ClosePair('>')<CR>
+
+" sublime-like, ensures that typing over second of corresponding pair does nothing
 inoremap ) <c-r>=ClosePair(')')<CR>
 inoremap ] <c-r>=ClosePair(']')<CR>
-inoremap } <c-r>=CloseBracket()<CR>
+
+inoremap } <c-r>=ClosePair('}')<CR>
+"autocmd FileType *.c, *.cpp, *.cc, *.R, *.Rmd, *.java inoremap } <c-r>=CloseBracket()<CR>
+
 "inoremap " <c-r>=QuoteDelim('"')<CR>
 "inoremap ' <c-r>=QuoteDelim("'")<CR>
 
