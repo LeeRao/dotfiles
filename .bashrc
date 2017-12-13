@@ -131,3 +131,4 @@ alias add-key='ssh-copy-id' # followed by username@remote_host
 alias r='/opt/R/3.1.3/bin'
 alias rst='export RSTUDIO_WHICH_R=/opt/R/3.1.3/bin/R && rstudio'
 alias cdr='cd ~/Desktop/Research/Immune_Response'
+alias tensor='source ~/tensorflow/bin/activate'
