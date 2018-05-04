@@ -45,7 +45,7 @@ set term=screen-256color
 " Now from http://www.integralist.co.uk/posts/bash-vim-configuration.html
 set history=100
 set encoding=utf-8
-set clipboard+=unnamed
+set clipboard=unnamedplus
 
 " Now for my own additions
 set mouse=a " mouse enabled in all modes
@@ -56,27 +56,29 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" toggle for no auto-indenting paste
+set pastetoggle=<F3>
+
 " more natural split opening
 set splitbelow
 set splitright
 
-" highlight column 79
+" highlight column
 " 'highlight ColorColumn ctermbg=gray
 " set colorcolumn=100
 augroup columnLimit
     autocmd!
     autocmd BufEnter,WinEnter,FileType scala,java,python,c,*.cc,*.cpp
-        \ highlight CollumnLimit ctermbg=DarkGrey guibg=DarkGrey
-    let columnLimit = 79 " feel free to customize
+        \ highlight ColumnLimit ctermbg=DarkGrey guibg=DarkGrey
+    let columnLimit = 99 " python recommends 79, 99 if want to be more lenient
     let pattern =
         \ '\%<' . (columnLimit+1) . 'v.\%>' . columnLimit . 'v'
     autocmd BufEnter,WinEnter,FileType scala,java,python,c,*.cc,*.cpp
-        \ let w:m1=matchadd('CollumnLimit', pattern, -1)
+        \ let w:m1=matchadd('ColumnLimit', pattern, -1)
 augroup END
 
 " autocreate braces, taken from http://vim.wikia.com/wiki/Making_Parenthesis_And_Brackets_Handling_Easier
 " Also allows you to overlap closing character
-
 
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
@@ -137,4 +139,3 @@ function QuoteDelim(char)
  return a:char.a:char."\<Esc>i"
  endif
 endf
-
