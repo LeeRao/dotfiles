@@ -117,18 +117,32 @@ if ! shopt -oq posix; then
 fi
 
 # Stuff I added
+
+# allow for advanced glob expressions
+shopt -s extglob
+
 alias uml="python /home/lee/bin/plant.py "
 # alias python="python3"
 set editor -o vi
-alias color='python ~/bin/change_theme.py'
+# alias color='python ~/bin/change_theme.py'
 alias t='tmux'
+alias p='python3'
 alias utcs='ssh leerao@le-nozze-di-figaro.cs.utexas.edu'
 alias utcs2='ssh leerao@thurston-howell-iii.cs.utexas.edu'
 alias gsaf='ssh leerao@gsafcbig01.ccbb.utexas.edu'
 alias gsaf2='ssh leerao@gsafcbig02.ccbb.utexas.edu'
+alias ccbb='ssh leerao@ccbbcomp02.ccbb.utexas.edu'
 alias wcar='ssh leerao@wcarcomp01.ccbb.utexas.edu'
+alias wilk='ssh leerao@wilkcomp01.ccbb.utexas.edu'
 alias add-key='ssh-copy-id' # followed by username@remote_host
-alias r='/opt/R/3.1.3/bin'
+# alias r='/opt/R/3.1.3/bin'
 alias rst='export RSTUDIO_WHICH_R=/opt/R/3.1.3/bin/R && rstudio'
-alias cdr='cd ~/Desktop/Research/Immune_Response'
+alias cdr='cd ~/Desktop/Research/codon-clustering/Code'
 alias tensor='source ~/tensorflow/bin/activate'
+alias jn='jupyter notebook'
+alias compilecy='python setup.py build_ext --inplace'
+alias py27='source activate py27'
+alias xdg='xdg-open'
+
+# added by Anaconda3 installer
+export PATH="/home/lee/anaconda3/bin:$PATH"
