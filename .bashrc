@@ -125,8 +125,6 @@ alias t='tmux'
 alias utcs='ssh leerao@le-nozze-di-figaro.cs.utexas.edu'
 alias utcs2='ssh leerao@thurston-howell-iii.cs.utexas.edu'
 alias gsaf='ssh leerao@gsafcbig01.ccbb.utexas.edu'
-<<<<<<< HEAD
-=======
 alias gsaf2='ssh leerao@gsafcbig02.ccbb.utexas.edu'
 alias wcar='ssh leerao@wcarcomp01.ccbb.utexas.edu'
 alias add-key='ssh-copy-id' # followed by username@remote_host
@@ -134,4 +132,3 @@ alias r='/opt/R/3.1.3/bin'
 alias rst='export RSTUDIO_WHICH_R=/opt/R/3.1.3/bin/R && rstudio'
 alias cdr='cd ~/Desktop/Research/Immune_Response'
 alias tensor='source ~/tensorflow/bin/activate'
->>>>>>> 3eb29e8... Added vim-like copying to tmux
