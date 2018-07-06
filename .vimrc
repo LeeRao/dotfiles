@@ -16,6 +16,8 @@ autocmd FileType r,rmd set softtabstop=2
 autocmd FileType r,rmd set shiftwidth=2
 set expandtab
 
+autocmd FileType tsv, txt set noexpandtab
+
 set number
 set showcmd
 filetype indent on
