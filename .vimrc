@@ -11,11 +11,10 @@ colorscheme industry
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
-autocmd FileType r,rmd set tabstop=2
-autocmd FileType r,rmd set softtabstop=2
-autocmd FileType r,rmd set shiftwidth=2
-set expandtab
+autocmd FileType r,rmd set tabstop=2 softtabstop=2 shiftwidth=2
+autocmd BufRead,BufNewFile *.wdl setlocal tabstop=2 softtabstop=2
 
+set expandtab
 autocmd BufRead,BufNewFile *.tsv,*.txt setlocal noexpandtab
 
 set number
@@ -64,6 +63,9 @@ set pastetoggle=<F3>
 " more natural split opening
 set splitbelow
 set splitright
+
+" search for visually selected text
+vnoremap // y/<C-R>"<CR>
 
 " highlight column
 " 'highlight ColorColumn ctermbg=gray
