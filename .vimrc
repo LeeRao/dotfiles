@@ -1,4 +1,4 @@
-execute pathogen#infect()
+" execute pathogen#infect()
 
 " Taken largely from https://dougblack.io/words/a-good-vimrc.html
 syntax on
