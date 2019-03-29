@@ -117,6 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 # Stuff I added
+set editor -o vi
 
 # allow for advanced glob expressions
 shopt -s extglob
