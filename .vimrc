@@ -13,6 +13,8 @@ set softtabstop=4
 set shiftwidth=4
 autocmd FileType r,rmd set tabstop=2 softtabstop=2 shiftwidth=2
 autocmd BufRead,BufNewFile *.wdl setlocal tabstop=2 softtabstop=2
+autocmd BufRead,BufNewFile Jenkinsfile,*.nf set syntax=groovy
+autocmd BufNewFile,BufRead Snakefile,*.snake,*.smk set syntax=snakemake
 
 set expandtab
 autocmd BufRead,BufNewFile *.tsv,*.txt setlocal noexpandtab
@@ -48,7 +50,25 @@ set history=100
 set encoding=utf-8
 set clipboard=unnamedplus
 
-" Now for my own additions
+"""""""""""""""
+" Added by me "
+"""""""""""""""
+
+" better indent behavior
+set autoindent
+
+" Code folds
+set foldmethod=indent
+set nofoldenable
+nnoremap <space> za
+vnoremap <space> zf
+
+" linting
+let g:ale_python_pylint_options = '--rcfile ~/.pylintrc'
+let g:ale_python_flake8_options = '--max-line-length=100'
+let g:ale_enabled = 1
+map <F2> :ALEToggle<CR>
+
 set mouse=a " mouse enabled in all modes
 
 " easier split navigations
@@ -57,7 +77,7 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" toggle for no auto-indenting paste
+" toggle for normal copy-paste behavior
 set pastetoggle=<F3>
 
 " more natural split opening
@@ -72,12 +92,12 @@ vnoremap // y/<C-R>"<CR>
 " set colorcolumn=100
 augroup columnLimit
     autocmd!
-    autocmd BufEnter,WinEnter,FileType scala,java,python,c,*.cc,*.cpp
+    autocmd BufEnter,WinEnter,FileType scala,java,python,c,*.cc,*.cpp,*.R
         \ highlight ColumnLimit ctermbg=DarkGrey guibg=DarkGrey
     let columnLimit = 99 " python recommends 79, 99 if want to be more lenient
     let pattern =
         \ '\%<' . (columnLimit+1) . 'v.\%>' . columnLimit . 'v'
-    autocmd BufEnter,WinEnter,FileType scala,java,python,c,*.cc,*.cpp
+    autocmd BufEnter,WinEnter,FileType scala,java,python,c,*.cc,*.cpp,*.R
         \ let w:m1=matchadd('ColumnLimit', pattern, -1)
 augroup END
 
@@ -158,3 +178,5 @@ function! InsertTabWrapper()
 endfunction
 inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
+highlight Pmenu ctermfg=white ctermbg=black gui=NONE guifg=white guibg=black
+highlight PmenuSel ctermfg=white ctermbg=blue gui=bold guifg=white guibg=purple
