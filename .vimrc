@@ -120,6 +120,14 @@ inoremap } <c-r>=ClosePair('}')<CR>
 "inoremap " <c-r>=QuoteDelim('"')<CR>
 "inoremap ' <c-r>=QuoteDelim("'")<CR>
 
+" Change behavior of paste to no longer copy replaced text to buffer
+" https://superuser.com/questions/321547/how-do-i-replace-paste-yanked-text-in-vim-without-yanking-the-deleted-lines
+" NOTE: In VIM 9.0, this is no longer an issue, as P will produce the desired behavior.
+" vnoremap p "0p
+" vnoremap P "0P
+" vnoremap y "0y
+" vnoremap d "0d
+
 function! ConditionalPairMap(open, close)
     let line = getline('.')
     let col = col('.')
