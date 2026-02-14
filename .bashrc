@@ -119,14 +119,19 @@ fi
 # Stuff I added
 set editor -o vi
 
-# fix code command in tmux in VSCode integrated terminal
-if [ -n "$VSCODE_IPC_HOOK_CLI" ]; then
-    socket=$(ls -1t /run/user/$UID/vscode-ipc-*.sock 2> /dev/null | head -1)
-    export VSCODE_IPC_HOOK_CLI=${socket}
-fi
-
 # allow for advanced glob expressions
 shopt -s extglob
+
+# make `code` command in vscode compatible with tmux
+# taken from: https://github.com/microsoft/vscode-remote-release/issues/2763#issuecomment-2460467585
+code() {
+  local vscode_ipc=$(tmux show-env VSCODE_IPC_HOOK_CLI | cut -d '=' -f2) 2>/dev/null
+  if [[ -v TMUX && vscode_ipc != "" ]]; then
+    VSCODE_IPC_HOOK_CLI=$vscode_ipc command code "$@"
+  else
+    command code "$@"
+  fi
+}
 
 # added by Anaconda3 installer
 export PATH="/home/lee/anaconda3/bin:$PATH"
