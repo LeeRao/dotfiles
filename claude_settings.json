@@ -26,6 +26,14 @@
       "Bash(wc *)"
     ]
   },
+  "hooks": {
+    "Notification": [
+      { "matcher": "", "hooks": [{ "type": "command", "command": "printf '\\a' > /dev/tty" }] }
+    ],
+    "Stop": [
+      { "matcher": "", "hooks": [{ "type": "command", "command": "printf '\\a' > /dev/tty" }] }
+    ]
+  },
   "enabledPlugins": {
     "code-review@claude-plugins-official": true,
     "pr-review-toolkit@claude-plugins-official": true

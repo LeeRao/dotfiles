@@ -188,3 +188,7 @@ inoremap <expr> <tab> InsertTabWrapper()
 inoremap <s-tab> <c-n>
 highlight Pmenu ctermfg=white ctermbg=black gui=NONE guifg=white guibg=black
 highlight PmenuSel ctermfg=white ctermbg=blue gui=bold guifg=white guibg=purple
+
+" Silence audible bell (use visual bell, then clear the visual bell escape)
+set visualbell
+set t_vb=
