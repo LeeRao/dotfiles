@@ -1,0 +1,123 @@
+[audit]
+audit_file = "/tmp/claude-tool-use.json"
+audit_level = "matched"
+
+# === DENY RULES (checked first) ===
+
+# Block dangerous commands
+[[deny]]
+tool = "Bash"
+command_regex = "^rm .*-rf"
+
+[[deny]]
+tool = "Bash"
+command_regex = "^sudo "
+
+# Block reading sensitive files
+[[deny]]
+tool = "Read"
+file_path_regex = "\\.(env|secret|pem|key)$"
+
+# Block path traversal for file operations
+[[deny]]
+tool = "Read"
+file_path_regex = "\\.\\."
+
+[[deny]]
+tool = "Edit"
+file_path_regex = "\\.\\."
+
+[[deny]]
+tool = "Write"
+file_path_regex = "\\.\\."
+
+[[deny]]
+tool = "Glob"
+file_path_regex = "\\.\\."
+
+# === ALLOW RULES (checked after deny) ===
+
+# Read - allow all paths (mirrors "Read" in settings.json)
+[[allow]]
+tool = "Read"
+file_path_regex = ".*"
+
+# Glob - allow all paths (mirrors "Glob" in settings.json)
+[[allow]]
+tool = "Glob"
+file_path_regex = ".*"
+
+# Read-only Bash commands: cat, diff, echo, find, grep, head, ls, rg, tail, wc
+[[allow]]
+tool = "Bash"
+command_regex = "^(cat|diff|echo|find|grep|head|ls|rg|tail|wc)\\b"
+command_exclude_regex = "&|;|\\||`|\\$\\("
+
+# Git read-only commands: diff, log, status, show
+[[allow]]
+tool = "Bash"
+command_regex = "^git (diff|log|status|show)\\b"
+command_exclude_regex = "&|;|\\||`|\\$\\("
+
+# git -C <path> show <ref>
+[[allow]]
+tool = "Bash"
+command_regex = "^git -C .+ show\\b"
+command_exclude_regex = "&|;|\\||`|\\$\\("
+
+# gh pr diff
+[[allow]]
+tool = "Bash"
+command_regex = "^gh pr diff\\b"
+command_exclude_regex = "&|;|\\||`|\\$\\("
+
+# --- Subagent types ---
+# Core subagents
+[[allow]]
+tool = "Task"
+subagent_type = "Explore"
+
+[[allow]]
+tool = "Task"
+subagent_type = "Plan"
+
+[[allow]]
+tool = "Task"
+subagent_type = "general-purpose"
+
+[[allow]]
+tool = "Task"
+subagent_type = "Bash"
+
+[[allow]]
+tool = "Task"
+subagent_type = "claude-code-guide"
+
+[[allow]]
+tool = "Task"
+subagent_type = "statusline-setup"
+
+# PR review toolkit subagents (matches enabled plugins)
+[[allow]]
+tool = "Task"
+subagent_type = "pr-review-toolkit:pr-test-analyzer"
+
+[[allow]]
+tool = "Task"
+subagent_type = "pr-review-toolkit:code-simplifier"
+
+[[allow]]
+tool = "Task"
+subagent_type = "pr-review-toolkit:code-reviewer"
+
+[[allow]]
+tool = "Task"
+subagent_type = "pr-review-toolkit:type-design-analyzer"
+
+[[allow]]
+tool = "Task"
+subagent_type = "pr-review-toolkit:silent-failure-hunter"
+
+[[allow]]
+tool = "Task"
+subagent_type = "pr-review-toolkit:comment-analyzer"
