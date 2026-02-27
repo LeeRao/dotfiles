@@ -56,7 +56,7 @@ command_exclude_regex = "&|;|\\||`|\\$\\("
 # Git read-only commands: diff, log, status, show
 [[allow]]
 tool = "Bash"
-command_regex = "^git (diff|log|status|show)\\b"
+command_regex = "^git (diff|log|status|show|ls-tree)\\b"
 command_exclude_regex = "&|;|\\||`|\\$\\("
 
 # git -C <path> show <ref>
