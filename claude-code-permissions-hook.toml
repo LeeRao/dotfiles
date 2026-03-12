@@ -71,6 +71,14 @@ tool = "Bash"
 command_regex = "^gh pr diff\\b"
 command_exclude_regex = "&|;|\\||`|\\$\\("
 
+
+# gh api
+[[allow]]
+tool = "Bash"
+command_regex = "^gh api\\b"
+command_exclude_regex = "&|;|\\||`|\\$\\("
+
+
 # --- Subagent types ---
 # Core subagents
 [[allow]]
