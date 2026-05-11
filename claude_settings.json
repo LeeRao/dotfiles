@@ -28,10 +28,10 @@
   },
   "hooks": {
     "Notification": [
-      { "matcher": "", "hooks": [{ "type": "command", "command": "printf '\\a' > /dev/tty" }] }
+      { "matcher": "", "hooks": [{ "type": "command", "command": "for fd in /proc/$PPID/fd/*; do t=$(readlink \"$fd\" 2>/dev/null); case \"$t\" in /dev/pts/*|/dev/tty*) printf '\\a' > \"$t\" 2>/dev/null && exit 0 ;; esac; done" }] }
     ],
     "Stop": [
-      { "matcher": "", "hooks": [{ "type": "command", "command": "printf '\\a' > /dev/tty" }] }
+      { "matcher": "", "hooks": [{ "type": "command", "command": "for fd in /proc/$PPID/fd/*; do t=$(readlink \"$fd\" 2>/dev/null); case \"$t\" in /dev/pts/*|/dev/tty*) printf '\\a' > \"$t\" 2>/dev/null && exit 0 ;; esac; done" }] }
     ]
   },
   "enabledPlugins": {
